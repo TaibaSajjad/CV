@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Taiba-Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* I am writing comments to this CV for clear understanging */
+    /* setting the font and background for body*/
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background: #fff;
+      padding: 0;
+      color: #222e36;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .box {
+      margin: 20px auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: row;      /* Always row */
+      max-width: 970px;
+      min-width: 970px;         /* Prevents too small width */
+      background: #fff;
+      box-sizing: border-box;
+      gap: 0;
+    }
+    .leftportion {
+      background: #fff;
+      width: 245px;
+      min-width: 220px;
+      max-width: 300px;
+      padding: 25px 24px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    .main {
+      flex: 1;
+      padding: 20px 32px;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+    /*setting the image at the top left*/
+    .pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 10px auto 20px auto; 
+      border: 2px solid #dbe2ea;
+      margin-bottom: 30px;
+    }
+    .contact-info {
+      margin-bottom: 30px;
+    }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .contact-item i {
+      font-size: 22px;
+      color: #222e36;
+      margin-bottom: 2px;
+    }
+    .contact-detail {
+      font-size: 13px;
+      color: #000;
+      margin-left: 2px;
+    }
+    .contact-detail a {
+      color: #000;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .skills, .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .skill{
+      background: #8a92a3;
+      color: #fff;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .interest {
+      color: #2a3a4d;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 14px;
+      margin-bottom: 6px;
+      background: none; 
+      border: 2px solid #b0b0b0; 
+    }
+    .languages {
+      margin-bottom: 18px;
+    }
+    .lang {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .lang span {
+      color: #6a7a8c;
+      font-size: 13px;
+      display: block;
+    }
+    
+    /* Background applies only to the header section*/
+    .header {
+      background: #2a3a4d;
+      color: #fff;
+      padding: 0px 30px 15px 25px;
+      margin: 0 -36px 24px -20px;
+      border-radius: 0;
+      position: relative;
+    }
+    .header h1 {
+      margin-bottom: -9px; 
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .header h2 {
+      margin: 8px 0 10px 0; 
+      font-size: 19px;
+      font-weight: 400;
+      color: #f8f9fa;
+      position: relative;
+    }
+    .header h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 40%; 
+      height: 2px;
+      background-color: white;
+    }
+    .header p {
+      margin: 15px 0 0; 
+      font-size: 15px;
+      color: #f8f9fa
+    }
+    .edu, .work, .project {
+      margin-bottom: 18px;
+    }
+    .edu-title, .work-title {
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 1px;
+      color: #3E4A57;
+    }
+    .edu-place, .work-place ,.project-title{
+      font-size: 20px;
+      color: #000000;
+      margin-top: -7px;
+      margin-bottom: 1px;
+    }
+    .edu-date, .work-date {
+      font-size: 13px;
+      color: #7a8a9c;
+      float: right;
+    }
+    .edu-location, .work-location {
+      font-size: 13px;
+      color: #7a8a9c;
+      float: right;
+      margin-left: 10px;
+    }
+    .edu-desc, .work-desc, .project-desc {
+      font-size: 14px;
+      color: #3a4a5d;
+      margin-bottom: 2px;
+    }
+    .edu-details {
+      display: flex;
+      justify-content: space-between; 
+      font-size: 13px;
+      color: #7a8a9c;
+    }
+    .edu-date, .edu-location {
+      float: none;
+    }
+    .achievements {
+      list-style-type: none; 
+      padding-left: 20px; 
+      margin: 0 0 0 -20px;
+      font-size: 14px;
+      color: #2a3a4d;
+    }
+    .achievements li {
+      position: relative;
+      color: #000;
+      margin-bottom: 5px; 
+      padding-left: 20px; 
+    }
+    /* making the bullet points square and hollow*/
+    .achievements li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%; 
+      width: 7px;
+      height: 7px;
+      border: 3px solid #2a3a4d;
+      background-color: transparent; 
+      box-sizing: border-box
+    }
+    .section {
+      margin-bottom: 28px;
+    }
+    .section h2, .section-title{
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #2a3a4d;
+      padding-bottom: 2px;
+      position: relative; 
+    }
+    .section h2::before {
+      content: '';
+      position: absolute;
+      left: -20px; 
+      right: 0;
+      bottom: 0;
+      border-bottom: 1.5px solid #2a3a4d;
+    }
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0px; 
+      right: 0px;
+      bottom: 0;
+      border-bottom: 1.5px solid #2a3a4d;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="leftportion">
+      <img src="Cv image.jpg" alt="Profile Picture" class="pic">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div class="contact-detail">
+            <a href="mailto:taibasajjad08@gmail.com">taibasajjad08@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-mobile-alt"></i>
+          <div class="contact-detail">03073160980</div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="contact-detail">Sialkot, Pakistan</div>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <div class="contact-detail">
+            <a href="https://www.linkedin.com/in/taiba-sajjad-14a039300/" target="_blank">linkedin.com/in/taiba-sajjad-14a039300</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <div class="contact-detail">
+            <a href="https://github.com/TaibaSajjad" target="_blank">github.com/TaibaSajjad</a>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">SKILLS</div>
+      <div class="skills">
+        <div class="skill">Graphic design</div>
+        <div class="skill">Logo design</div>
+        <div class="skill">Infographic creation</div>
+        <div class="skill">Adobe Photoshop and Illustrator</div>
+        <div class="skill">Presentation design</div>
+      </div>
+      <div class="section-title" style="margin-top: 60px;">LANGUAGES</div>
+      <div class="languages">
+        <div class="lang">English <span><i>Professional Working Proficiency</i></span></div>
+        <div class="lang">Urdu <span><i>Native or Bilingual Proficiency</i></span></div>
+      </div>
+      <div class="section-title" style="margin-top: 50px;">INTERESTS</div>
+      <div class="interests">
+        <div class="interest">Creative Design</div>
+        <div class="interest">Branding and<br>Advertising</div>
+        <div class="interest">Visual storytelling</div>
+        <div class="interest">Web Design and development</div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="header">
+        <h1>Taiba Sajjad</h1>
+        <h2>Graphic Designer</h2>
+        <p>Proficient in creating visually engaging designs, including marketing materials, projects layouts and branding elements</p>
+      </div>
+      <div class="section">
+        <h2>EDUCATION</h2>
+        <div class="edu">
+          <div class="edu-title">Bachelor of Science in Software Engineering</div>
+          <div class="edu-place">University of Management and Technology</div>
+          <div class="edu-details">
+            <span class="edu-date"><i>10/2022 - Present</i></span>
+            <span class="edu-location"><i>Sialkot, Pakistan</i></span>
+          </div>
+        </div>
+        <div class="edu">
+          <div class="edu-title">Intermediate in Pre-Engineering</div>
+          <div class="edu-place">Government College Women University, Sialkot</div>
+          <div class="edu-details">
+            <span class="edu-date"><i>09/2020 - 08/2022</i></span>
+            <span class="edu-location"><i>Sialkot, Pakistan</i></span>
+          </div>
+        </div>
+        <div class="edu">
+          <div class="edu-title">Matriculation in Biology</div>
+          <div class="edu-place">Brookfield School System</div>
+          <div class="edu-details">
+            <span class="edu-date"><i>08/2018 - 07/2020</i></span>
+            <span class="edu-location"><i>Sialkot, Pakistan</i></span>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h2 style="margin-top: 50px;">WORK EXPERIENCE</h2>
+        <div class="work">
+          <div class="work-title">Graphic Designer</div>
+          <div class="work-place">Self-Taught</div>
+          <div class="edu-details">
+            <span class="edu-date"><i>09/2021 - Present</i></span>
+            <span class="edu-location">Sialkot, Pakistan</span>
+          </div>
+          <div class="work-desc">
+            <i>Self-initiated graphic design projects to enhance skills and build a portfolio</i>
+          </div>
+          <div class="edu-details">
+            <span class="edu-date"><i>Achievements/Tasks</i></span>
+          </div>
+          <ul class="achievements">
+            <li>Practiced software such as Adobe Photoshop, Illustrator and Canva.</li>
+            <li>Developed innovative mock projects such as posters, banners and website designs.</li>
+            <li>Developed branding materials including logos, business cards and marketing materials.</li>
+            <li>Acquired skill in Canva for creating professional and creative designs, and the ability to develop photo editing skills in Photoshop.</li>
+            <li>Focused on learning about design elements like typography, color palette and user experience.</li>
+          </ul>
+        </div>
+        <div class="section">
+          <h2 style="margin-top: 40px;">PERSONAL PROJECTS</h2>
+          <div class="project">
+            <div class="project-title">Student Performance Detection Model</div>
+            <ul class="achievements">
+              <li>Developed a model using Python and Jupyter Notebook to analyze and predict student performance based on key factors like attendance, grades, and participation.</li>
+            </ul>
+          </div>
+          <div class="project">
+            <div class="project-title">Marketing Plan for Business Project</div>
+            <ul class="achievements">
+              <li>Created a comprehensive and visually appealing marketing plan, detailing strategies, objectives, and creative ideas for business growth.</li>
+            </ul>
+          </div>
+          <div class="project">
+            <div class="project-title">Django-Based Coffee Shop Website</div>
+            <ul class="achievements">
+              <li>Designed a dynamic and user-friendly coffee shop website using Django, featuring menu management, online orders, and customer feedback functionality.</li>
+            </ul>
+          </div>
+          <div class="project">
+            <div class="project-title">Online Medical Tender Management System</div>
+            <ul class="achievements">
+              <li>Developed a system using SQL to streamline tender submissions, improve record-keeping, and ensure efficient data management in medical procurement.</li>
+            </ul>
+          </div>
+          <div class="project">
+            <div class="project-title">University Transport Management System</div>
+            <ul class="achievements">
+              <li>Built a system in C++ to manage transport routes, fares, and schedules for efficient university transit operations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
